@@ -1,0 +1,273 @@
+﻿<div class="container">
+@*    <div class="hero-unit">
+        <div>
+            <h1>
+                Hello Mr. Bakri!
+            </h1>
+            <p>
+                This is a template for a simple marketing or informational website. It
+                includes a large callout called the hero unit and three supporting pieces
+                of content. Use it as a starting point to create something more unique.
+            </p>
+        </div>
+        <a class="btn btn-primary" href="#">
+            Learn more »
+        </a>
+    </div>*@
+
+    <div class="row">
+        <div class="span12">
+            <div>
+                <div id="chartYbondsAndBonuses"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <br/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <table class="table table-condensed">
+                <caption>As of @DateTime.Now.ToString("dd MMM yyyy"), you have accumulated:</caption>
+                <tbody>
+                    <tr>
+                        <td>Purchases</td>
+                        <td><a href="#">75</a></td>
+                    </tr>
+                    <tr>
+                        <td>Purchase Amount</td>
+                        <td><a href="#">225,000 AED</a></td>
+                    </tr>
+                    <tr>
+                        <td>Cash Back Bonus</td>
+                        <td><a href="#">2,250 AED</a></td>
+                    </tr>
+                    <tr>
+                        <td>Referral Bonus</td>
+                        <td><a href="#">5,679 AED</a></td>
+                    </tr>
+                    <tr>
+                        <td>Special Bonus</td>
+                        <td><a href="#">7,240 AED</a></td>
+                    </tr>
+                    <tr>
+                        <td>YBonds</td>
+                        <td><a href="#">112</a></td>
+                    </tr>
+                    <tr>
+                        <td>Current Wallet Money</td>
+                        <td><a href="#">88 AED</a></td>
+                    </tr>
+                </tbody>
+            </table>        
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span4">
+            <div>
+                <h2>
+                    Heading
+                </h2>
+                <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus
+                    ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+                    sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
+                    odio dui.
+                </p>
+            </div>
+            <a class="btn" href="#">
+                View details »
+            </a>
+        </div>
+        <div class="span4">
+            <div>
+                <h2>
+                    Heading
+                </h2>
+                <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus
+                    ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+                    sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
+                    odio dui.
+                </p>
+            </div>
+            <a class="btn" href="#">
+                View details »
+            </a>
+        </div>
+        <div class="span4">
+            <div>
+                <h2>
+                    Heading
+                </h2>
+                <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus
+                    ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+                    sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
+                    odio dui.
+                </p>
+            </div>
+            <a class="btn" href="#">
+                View details »
+            </a>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //produceBonusesChart();
+            produceDualChart();
+        });
+        
+        function produceBonusesChart() {
+            chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'chartYbondsAndBonuses',
+                    type: 'area'
+                },
+                title: {
+                    text: 'Last 30 day cashback and referral bonuses'
+                },
+                subtitle: {
+                    text: 'Source: YESR Platform'
+                },
+                xAxis: {
+                    labels: {
+                        formatter: function () {
+                            return this.value; // clean, unformatted number for year
+                        }
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'AED'
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value;
+                        }
+                    }
+                },
+                tooltip: {
+                    formatter: function () {
+                        return this.series.name + ' received <b>' +
+                            Highcharts.numberFormat(this.y, 0) + '</b><br/>AED in ' + this.x;
+                    }
+                },
+                plotOptions: {
+                    area: {
+                        pointStart: 1,
+                        marker: {
+                            enabled: false,
+                            symbol: 'circle',
+                            radius: 2,
+                            states: {
+                                hover: {
+                                    enabled: true
+                                }
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Referral',
+                    data: [null, null, null, null, null, 6, 11, 32, 11, 23,
+                            36, 64, 5, 14, 20, 30, 46, 64, 98, 15,
+                            20, 24, 11, 12, 6, 29, 31, 7, 9, 10]
+                }, {
+                    name: 'Cashback',
+                    data: [5, 25, 50, 12, 15, 20, 42, 66, 86, 10,
+                            16, 24, 33, 38, 21, 29, 89, 39, 99, 10,
+                            38, 43, 92, 78, 45, 23, 33, 12, 90, 56]
+                }]
+            });
+        }
+        
+        function produceDualChart() {
+            chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'chartYbondsAndBonuses',
+                    zoomType: 'xy'
+                },
+                title: {
+                    text: 'Last 12 month of YBonds and bonuses'
+                },
+                subtitle: {
+                    text: 'Source: YESR Platform'
+                },
+                xAxis: [{
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                }],
+                yAxis: [{ // Primary yAxis
+                    labels: {
+                        formatter: function () {
+                            return this.value + ' ';
+                        },
+                        style: {
+                            color: '#89A54E'
+                        }
+                    },
+                    title: {
+                        text: 'YBonds',
+                        style: {
+                            color: '#89A54E'
+                        }
+                    }
+                }, { // Secondary yAxis
+                    title: {
+                        text: 'Bonuses',
+                        style: {
+                            color: '#4572A7'
+                        }
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value + ' AED';
+                        },
+                        style: {
+                            color: '#4572A7'
+                        }
+                    },
+                    opposite: true
+                }],
+                tooltip: {
+                    formatter: function () {
+                        return '' +
+                            this.x + ': ' + this.y +
+                            (this.series.name == 'YBonds' ? ' YBond' : ' AED');
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    x: 120,
+                    verticalAlign: 'top',
+                    y: 100,
+                    floating: true,
+                    backgroundColor: '#FFFFFF'
+                },
+                series: [{
+                    name: 'Bonuses',
+                    color: '#4572A7',
+                    type: 'column',
+                    yAxis: 1,
+                    data: [125, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+                }, {
+                    name: 'YBonds',
+                    color: '#89A54E',
+                    type: 'spline',
+                    data: [4, 6, 9, 6, 8, 4, 5, 3, 2, 6, 5, 9]
+                }]
+            });
+        }
+    </script>
+}

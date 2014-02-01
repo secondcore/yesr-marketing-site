@@ -1,0 +1,117 @@
+﻿<form class="form-horizontal">
+    <div id="activationData" class="control-group">
+        <label class="control-label" for="activationCode">Activation Code</label>
+        <div class="controls">
+            <input type="text" id="activationCode" placeholder="Activation Code">
+            <button id="btnGet" type="button" class="btn btn-primary btn-nbc">Get</button>
+        </div>
+    </div>
+    <div id="formData" class="control-group">
+        <ul class="nav nav-tabs nav-stacked" style="margin-left: 60px">
+            <li>Mobile Number: (050) 555-1212</li>
+            <li>Registration Channel: Carrefour</li>
+        </ul>
+
+        <label class="control-label" for="inputFirstName">First Name</label>
+        <div class="controls">
+            <input type="text" id="inputFirstName" placeholder="First Name">
+        </div>
+        <label class="control-label" for="inputSecondName">Second Name</label>
+        <div class="controls">
+            <input type="text" id="inputSecondName" placeholder="Second Name">
+        </div>
+        <label class="control-label" for="inputEmail">Email</label>
+        <div class="controls">
+            <input type="text" id="inputEmail" placeholder="Email">
+        </div>
+        <label class="control-label" for="inputUserId">User Id</label>
+        <div class="controls">
+            <input type="text" id="inputUserId" placeholder="User Id">
+        </div>
+        <label class="control-label" for="inputPassword">Password</label>
+        <div class="controls">
+            <input type="password" id="inputPassword" placeholder="Password">
+        </div>
+        <label class="control-label" for="inputPasswordVerify">Verify Password</label>
+        <div class="controls">
+            <input type="password" id="inputPasswordVerify" placeholder="Verify Password">
+        </div>
+        <div class="controls">
+            <a href="#" id="terms" class="btn btn-primary" rel="popover"style="margin-top: 10px">Terms and Conditions</a> 
+        </div>
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox"> I agree to the terms and conditions
+            </label>
+        </div>
+        <div class="controls">
+            <button id="btnActivate" type="button" class="btn btn-primary btn-nbc" data-toggle="modal" data-loading-text="Activating..." style="margin-top: 10px">Activate</button>
+        </div>
+    </div>
+</form>
+
+@*
+    Activation completion modal 
+*@
+<div id="activationCompleteDlg" class="modal hide fade in" style="display: none; ">  
+    <div class="modal-header">  
+    <a class="close" data-dismiss="modal">×</a>  
+    <p class="text-success">Congratulations! Your YESR membership has been activated!</p>  
+    </div>  
+    <div class="modal-body">
+        <ol>
+            <li>Your YESR membership number is 99923900012345</li>
+            <li>Your can access the members site using the credentials you provided in the activation form!</li>
+            <li>You are about to start a great savings journey!</li>
+            <li>Should you need any help, please do not hesitate to contact us!</li>
+        </ol>
+    </div>  
+    <div class="modal-footer">  
+    <a href="#" class="btn" data-dismiss="modal">Close</a>  
+    </div>  
+</div>  
+
+@section scripts {
+    <script type="text/javascript">
+        window.onload = function() {
+            $('#terms').popover({ placement: 'right', animation: true, html: true, title: 'YESR Terms and Conditions', content: termsData() });
+
+            toggleActivationData(false);
+
+            $('#btnGet').click(function() {
+                toggleActivationData(true);
+            });
+
+            $('#btnActivate').click(function() {
+                activate();
+            });
+        };
+
+        function activate() {
+            $('#btnActivate').button('loading');
+
+            setTimeout(function() {
+                $('#btnActivate').button('reset');
+                $('#activationCode').val('');
+                toggleActivationData(false);
+                $('#activationCompleteDlg').modal({ keyboard: true, backdrop: true });
+            }, 2000);
+        }
+
+        function termsData() {
+            return "<ul>" +
+                "<li>Please note your profile is not completed yet until you present your passport or Emirates ID at the nearest NBC location</li>" +
+                "<li>After activation and using the credentials you supplied above, you can login to the YESR site to manage your account</li>" +
+                "<li>You can print your card bar code directly from your account or use your YESR mobile application to present your bar code at particpating merchants</li>";
+        }
+
+        function toggleActivationData(show) {
+            if (show) {
+                $('#formData').show();
+            } else {
+                $('#formData').hide();
+            }
+        }
+    </script>
+}
+

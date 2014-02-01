@@ -1,0 +1,42 @@
+﻿<div class="banner">
+    <p id="title">YESR<span class="subtitle">&nbsp;&nbsp;Your saving opportunity</span></p>
+    <div class="row-fluid">
+        <ul class="thumbnails">
+            <li class="span6">
+                <div style="text-align: center" class="thumbnail">
+                    <img src="~/Content/img/kiosk_banner.png" alt="Thumbnail">
+                    <h3>Confirmation</h3>
+                    <p>Confirming your YESR membership guarantees access to your bonuses and YBonds!!</p>
+                    <button class="btn btn-large btn-nbc" type="button" data-toggle="modal" data-target="#confirmation-form">Confirm</button>
+                </div>
+            </li>
+            <li class="span6">
+                <div style="text-align: center" class="thumbnail">
+                    <img src="~/Content/img/kiosk_banner.png" alt="Thumbnail">
+                    <h3>Activation</h3>
+                    <p>Do you have an activation code? Please activate your membership....it takes a few seconds.</p>
+                    <button class="btn btn-large btn-nbc" type="button" data-toggle="modal" data-target="#activation-form">Activate</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Confirmation Form -->
+@Html.Partial("_ConfirmationForm")
+
+<!-- Activation Form -->
+@Html.Partial("_ActivationForm")
+
+
+@section scripts {
+    <script type="text/javascript">
+        window.onload = function () {
+            // This function is in the partial view _ConfirmationForm
+            bootstrapConfirmationForm();
+            // This function is in the partial view _ActivationForm
+            bootstrapActivationForm();
+        };
+    </script>
+}
+

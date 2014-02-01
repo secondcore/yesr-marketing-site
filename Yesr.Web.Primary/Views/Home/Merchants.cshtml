@@ -1,0 +1,248 @@
+﻿<style>
+    .shadowed
+    {
+        box-shadow: 0.5em 0.5em 0.5em #555555;
+    }
+
+    .thumbnails .span4:hover
+    {
+        box-shadow: 0.8em 0.8em 0.5em #555555;
+    }
+
+    .disc-provider-summary {
+        display: none;
+    }
+
+</style>
+
+<div class="row" style="margin: 10px">
+    <form>
+        <label>Search YESR discount providers:</label>
+        <input id="storeInput" type="text"
+            data-provide="typeahead" data-items="4" data-source="[&quot;Carrefour&quot;,&quot;Loulou&quot;,&quot;Zulaikha&quot;,&quot;NMC&quot;,&quot;Sharaf DG&quot;]">
+    </form>
+</div>
+
+<div class="row" style="margin: 10px">
+    <div class="span4">
+        <ul class="nav nav-tabs nav-stacked">
+            <li><a href="@Url.Action("Merchants", "Home", new {id = "HyperMarkets"})">Hyper Markets</a></li>
+            <li><a href="@Url.Action("Merchants", "Home", new {id = "Medical"})">Medical</a></li>
+            <li><a href="@Url.Action("Merchants", "Home", new {id = "Electronics"})">Electronics</a></li>
+            <li><a href="@Url.Action("Merchants", "Home", new {id = "Schools"})">Schools</a></li>
+        </ul>
+    </div>
+    <div class="span8">
+        <ul class="thumbnails">
+            <li class="span4">
+                <div class="thumbnail shadowed">
+                    <img class="img-circle" src="/Content/img/comingSoon.png" />
+                    <div class="caption">
+                        <h5></h5>
+                        <div>
+                            <span>Id: </span><span>9011</span>
+                        </div>
+                        <div>
+                            <span>Category: </span><span>Hyper Markets</span>
+                        </div>
+                        <div>
+                            <span>Discount: </span><span>8 % - Itemized</span>
+                        </div>
+                        <div>
+                            <span>Name: </span><span>Carrefour</span>
+                        </div>
+                        <div>
+                            <span>Join Date: </span><span>MAR 2013</span>
+                        </div>
+                        <p class="disc-provider-summary">Description .....</p>
+                        <p>
+                            <a href="@Url.Action("Merchant", "Home", new {id = "9011"})" class="btn btn-primary">Detail</a>
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="span4">
+                <div class="thumbnail shadowed">
+                    <img class="img-circle" src="/Content/img/comingSoon.png" />
+                    <div class="caption">
+                        <h5></h5>
+                        <div>
+                            <span>Id: </span><span>9079</span>
+                        </div>
+                        <div>
+                            <span>Category: </span><span>Hyper Markets</span>
+                        </div>
+                        <div>
+                            <span>Discount: </span><span>8 % - Itemized</span>
+                        </div>
+                        <div>
+                            <span>Name: </span><span>Loulou Market</span>
+                        </div>
+                        <div>
+                            <span>Join Date: </span><span>FEB 2013</span>
+                        </div>
+                        <p class="disc-provider-summary">Description .....</p>
+                        <p>
+                            <a href="@Url.Action("Merchant", "Home", new {id = "9079"})" class="btn btn-primary">Detail</a>
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="span4">
+                <div class="thumbnail shadowed">
+                    <img class="img-circle" src="/Content/img/comingSoon.png" />
+                    <div class="caption">
+                        <h5></h5>
+                        <div>
+                            <span>Id: </span><span>8011</span>
+                        </div>
+                        <div>
+                            <span>Category: </span><span>Electronics</span>
+                        </div>
+                        <div>
+                            <span>Discount: </span><span>12 % - Itemized</span>
+                        </div>
+                        <div>
+                            <span>Name: </span><span>Sharaf DG</span>
+                        </div>
+                        <div>
+                            <span>Join Date: </span><span>FEB 2013</span>
+                        </div>
+                        <p class="disc-provider-summary">Description .....</p>
+                        <p>
+                            <a href="@Url.Action("Merchant", "Home", new {id = "8011"})" class="btn btn-primary">Detail</a>
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="span4">
+                <div class="thumbnail shadowed">
+                    <img class="img-circle" src="/Content/img/comingSoon.png" />
+                    <div class="caption">
+                        <h5></h5>
+                        <div>
+                            <span>Id: </span><span>7066</span>
+                        </div>
+                        <div>
+                            <span>Category: </span><span>Medical</span>
+                        </div>
+                        <div>
+                            <span>Discount: </span><span>22 % - Itemized</span>
+                        </div>
+                        <div>
+                            <span>Name: </span><span>Zulaikha Hospital</span>
+                        </div>
+                        <div>
+                            <span>Join Date: </span><span>FEB 2013</span>
+                        </div>
+                        <p class="disc-provider-summary">Description .....</p>
+                        <p>
+                            <a href="@Url.Action("Merchant", "Home", new {id = "7066"})" class="btn btn-primary">Detail</a>
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="span4">
+                <div class="thumbnail shadowed">
+                    <img class="img-circle" src="/Content/img/comingSoon.png" />
+                    <div class="caption">
+                        <h5></h5>
+                        <div>
+                            <span>Id: </span><span>7065</span>
+                        </div>
+                        <div>
+                            <span>Category: </span><span>Medical</span>
+                        </div>
+                        <div>
+                            <span>Discount: </span><span>12 % - Non-Itemized</span>
+                        </div>
+                        <div>
+                            <span>Name: </span><span>NMC Hospital</span>
+                        </div>
+                        <div>
+                            <span>Join Date: </span><span>APR 2013</span>
+                        </div>
+                        <p class="disc-provider-summary">Description .....</p>
+                        <p>
+                            <a href="@Url.Action("Merchant", "Home", new {id = "7065"})" class="btn btn-primary">Detail</a>
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="span4">
+                <div class="thumbnail shadowed">
+                    <img class="img-circle" src="/Content/img/comingSoon.png" />
+                    <div class="caption">
+                        <h5></h5>
+                        <div>
+                            <span>Id: </span><span>7067</span>
+                        </div>
+                        <div>
+                            <span>Category: </span><span>Medical</span>
+                        </div>
+                        <div>
+                            <span>Discount: </span><span>22 % - Itemized</span>
+                        </div>
+                        <div>
+                            <span>Name: </span><span>Zahra Hospital</span>
+                        </div>
+                        <div>
+                            <span>Join Date: </span><span>APR 2013</span>
+                        </div>
+                        <p class="disc-provider-summary">Description .....</p>
+                        <p>
+                            <a href="@Url.Action("Merchant", "Home", new {id = "7067"})" class="btn btn-primary">Detail</a>
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="span4">
+                <div class="thumbnail shadowed">
+                    <img class="img-circle" src="/Content/img/comingSoon.png" />
+                    <div class="caption">
+                        <h5></h5>
+                        <div>
+                            <span>Id: </span><span>7068</span>
+                        </div>
+                        <div>
+                            <span>Category: </span><span>Medical</span>
+                        </div>
+                        <div>
+                            <span>Discount: </span><span>22 % - Itemized</span>
+                        </div>
+                        <div>
+                            <span>Name: </span><span>Zahra Hospital</span>
+                        </div>
+                        <div>
+                            <span>Join Date: </span><span>APR 2013</span>
+                        </div>
+                        <p class="disc-provider-summary">Description .....</p>
+                        <p>
+                            <a href="@Url.Action("Merchant", "Home", new {id = "7068"})" class="btn btn-primary">Detail</a>
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        window.onload = function () {
+            //bootstrapMerchants();
+        };
+
+        function bootstrapMerchants() {
+            $(".thumbnail.shadowed").popover({ placement: 'right', animation: true, html: true, title: 'Discount Provider Summary', trigger: 'manual' });
+            $(".thumbnail.shadowed").hover(getSummaryData);
+        };
+
+        function getSummaryData() {
+            //alert('asas');
+            var self = $(this);
+            self.attr('content', 'xxx');
+            self.popover('show');
+        }
+    </script>
+}

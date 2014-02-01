@@ -1,0 +1,122 @@
+﻿<div id="myCarousel" class="carousel slide">
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+        <div class="item">
+          <img src="~/Content/img/img1-buyG.jpg" alt="Member Calculator">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>It pays to use YESR</h1>
+              <p class="lead">Use the YESR member calculator to see how well you will be doing in a year.</p>
+              <a class="btn btn-large btn-nbc" href="@Url.Action("MemberCalculator", "Home")">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="~/Content/img/img2-savingsG.jpg" alt="National Bonds of Dubai">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Belong to a world-class savings scheme</h1>
+              <p class="lead">Savings is trusted to Dubai National Bonds!!!</p>
+              <a class="btn btn-large btn-nbc" href="http://www.nationalbonds.ae" target="_blank">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="active item">
+          <img src="~/Content/img/img3-grocceryG.jpg" alt="Registrtaion Form">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>It is easy to be part of YESR</h1>
+              <p class="lead">Just fill out a small form and submit it online. You can be part of a great saving experience in minutes.</p>
+              <button class="btn btn-large btn-nbc" type="button" data-toggle="modal" data-target="#registration-form">Register Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="~/Content/img/img4-nbG.jpg" alt="Mobile">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Use your mobile to track your transactions</h1>
+              <p class="lead">Be prepared to be amazed and engaged!!</p>
+              <button class="btn btn-large btn-nbc" type="button" data-toggle="modal" data-target="#registration-form">Register Now</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+<!-- Registration Form -->
+@Html.Partial("_RegistrationForm")
+
+<!-- Activation Form -->
+@Html.Partial("_ActivationForm")
+    
+<!-- 
+    Marketing messaging and featurettes
+    ================================================== 
+    Wrap the rest of the page in another container to center all the content. 
+-->
+<div id="box">
+    <div class="container marketing">
+        <div class="row">
+        <div class="span4">
+            <a href="#"><img class="icon" src="~/Content/img/smartphone-3-128.png" alt="Smartphone"></a>
+            <h2 class="box-header"><b>@Html.ActionLink("Engage your phone", "How", "Home", new { tab = "mb" }, null)</b></h2>
+            <p>YESR smart phone unlocks great convenient features</p>
+        </div>
+        <div class="span4">
+            <a href="#"><img class="icon"src="~/Content/img/coins.png" alt="Discount Providers"></a>
+            <h2 class="box-header"><b>@Html.ActionLink("Visit YESR Discount Providers", "Merchants", "Home")</b></h2>
+            <p>YESR is accepted at many of your favourite stores throughout the UAE and our network is constantly growing </p>
+        </div>
+        <div class="span4">
+            <a class="icon" href="#"><img src="~/Content/img/bar-chart-4-128.png" alt="Smartphone"></a>
+            <h2 class="box-header"><b>@Html.ActionLink("Calculate your saving", "MemberCalculator", "Home")</b></h2>
+            <p>YESR member calculator reflects the true saving nature of the program and shows your net worth in 12 months</p>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- Image Gallary -->
+@*<div class="backgroundbelow">
+    <div class="merchantText">
+        YESR is accepted at many of your favourite stores throughout the UAE
+        <br>
+        and our network is constantly growing.
+    </div>
+    
+    <div class="merchants">
+            <div class="img">
+                <a href="#"><img src="~/Content/img/SharafDG - logo.png" alt="Sharaf DG"></a>
+            </div>
+
+            <div class="img">
+                 <a target="_blank" href="#"><img src="~/Content/img/comingSoon.png" alt="Second Merchant"></a>
+            </div>
+
+            <div class="img">
+                  <a target="_blank" href="#"><img src="~/Content/img/comingSoon.png" alt="Third Merchant"></a>
+            </div>
+
+            <div class="img">
+                   <a target="_blank" href="#"><img src="~/Content/img/comingSoon.png" alt="Fourth Merchant"></a>
+            </div>
+       
+             <div class="img">
+                   <a target="_blank" href="#"><img src="~/Content/img/comingSoon.png" alt="Fourth Merchant"></a>
+            </div>
+    </div>
+</div>*@
+    
+@section scripts {
+    <script type="text/javascript">
+        window.onload = function () {
+            // This function is in the partial view _ActivationForm
+            bootstrapActivationForm();
+        };
+    </script>
+}
+

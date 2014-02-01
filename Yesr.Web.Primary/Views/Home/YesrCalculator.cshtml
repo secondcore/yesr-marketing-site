@@ -1,0 +1,179 @@
+﻿<style>
+.label-info {
+  background-color: #3a87ad;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+</style>
+
+<div class="row" style="margin: 20px">
+    <div class="span4">
+        <form>
+            <span class="label label-info">Please complete and click calculate:</span>
+            <fieldset>
+                <label for="discountPercentage">Avg Merchant Discount %</label>
+                <select id="discountPercentage">
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option selected="">8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>12</option>
+                    <option>15</option>
+                    <option>20</option>
+                    <option>25</option>
+                    <option>30</option>
+                </select>
+                <label for="monthlyEnrollments">Avg Monthly Enrollments</label>
+                <select id="monthlyEnrollments">
+                    <option>10</option>
+                    <option>20</option>
+                    <option>30</option>
+                    <option>40</option>
+                    <option selected="">50</option>
+                    <option>60</option>
+                    <option>70</option>
+                    <option>80</option>
+                    <option>90</option>
+                    <option>100</option>
+                    <option>200</option>
+                    <option>300</option>
+                    <option>500</option>
+                </select>
+                <label for="monthlySpend">Avg Monthly Spend (AED) per Member</label>
+                <select id="monthlySpend">
+                    <option>1000</option>
+                    <option>2000</option>
+                    <option selected="">3000</option>
+                    <option>4000</option>
+                    <option>5000</option>
+                    <option>6000</option>
+                    <option>7000</option>
+                    <option>8000</option>
+                    <option>9000</option>
+                    <option>10000</option>
+                </select>
+                <br/>
+                <button id="btnCalculate" type="button" class="btn btn-primary btn-nbc" data-loading-text="Calculating...">Calculate!</button>
+            </fieldset>
+        </form>
+    </div>
+    <div id="chart" class="span10"></div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //var chartOptions = Highcharts.setOptions(App.Simulation.MemberCalculator.getChartGrayTheme());
+            calculate();
+            $('#btnCalculate').click(function() {
+                calculate();
+            });
+        });
+
+        function calculate() {
+            $('#btnCalculate').button('loading');
+            var chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'chart',
+                    type: 'line',
+                    marginRight: 130,
+                    marginBottom: 25
+                },
+                title: {
+                    text: 'Revenues and Bonuses for ' + $('#monthlySpend').val() + ' AE monthly spend and ' + $('#monthlyEnrollments').val() + ' monthly enrollments!'
+                },
+                subtitle: {
+                    text: 'Source: YESR Platform'
+                },
+                xAxis: [{
+                    categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+                }],
+                yAxis: {
+                    title: {
+                        text: 'AED'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '' +
+                            this.x + ': ' + this.y +
+                            (this.series.name == 'YBonds' ? ' YBonds' : ' AE');
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -10,
+                    y: 100,
+                    borderWidth: 0
+                },
+                series: [{
+                    name: 'Admin Fee',
+                    data: getAdminFeeData()
+                }, {
+                    name: 'Fund Fee',
+                    data: getFundFeeData()
+                }, {
+                    name: 'Wallet Money',
+                    data: getWalletMoneyData()
+                }, {
+                    name: 'Referral Bonus',
+                    data: getReferralBonusData()
+                }]
+            });
+
+            setTimeout(function() {
+                $('#btnCalculate').button('reset');
+            }, 1000);
+        }
+
+        function getAdminFeeData() {
+            // TODO: Send this to the platform to get calculated and returned
+            var discountPercentage = parseInt($('#discountPercentage').val());
+            var monthlySpend = parseInt($('#monthlySpend').val());
+            var monthlyEnrollments = parseInt($('#monthlyEnrollments').val());
+            var calculations = App.Simulation.MemberCalculator.calculate(discountPercentage, monthlySpend, monthlySpend, monthlyEnrollments, true, monthlyEnrollments);
+            return calculations['AdminFee'];
+            //return [0, 2, 3, 5, 6, 8, 10, 11, 13, 15, 18, 21];
+        }
+
+        function getFundFeeData() {
+            // TODO: Send this to the platform to get calculated
+            var discountPercentage = parseInt($('#discountPercentage').val());
+            var monthlySpend = parseInt($('#monthlySpend').val());
+            var monthlyEnrollments = parseInt($('#monthlyEnrollments').val());
+            var calculations = App.Simulation.MemberCalculator.calculate(discountPercentage, monthlySpend, monthlySpend, monthlyEnrollments, true, monthlyEnrollments);
+            return calculations['Fund'];
+            //return [0, 81, 210, 285, 409, 617, 910, 1312, 1904, 2306, 2766, 3020];
+        }
+
+        function getWalletMoneyData() {
+            // TODO: Send this to the platform to get calculated
+            var discountPercentage = parseInt($('#discountPercentage').val());
+            var monthlySpend = parseInt($('#monthlySpend').val());
+            var monthlyEnrollments = parseInt($('#monthlyEnrollments').val());
+            var calculations = App.Simulation.MemberCalculator.calculate(discountPercentage, monthlySpend, monthlySpend, monthlyEnrollments, true, monthlyEnrollments);
+            return calculations['WalletMoney'];
+            //return [0, 81, 210, 285, 409, 617, 910, 1312, 1904, 2306, 2766, 3020];
+        }
+
+        function getReferralBonusData() {
+            // TODO: Send this to the platform to get calculated
+            var discountPercentage = parseInt($('#discountPercentage').val());
+            var monthlySpend = parseInt($('#monthlySpend').val());
+            var monthlyEnrollments = parseInt($('#monthlyEnrollments').val());
+            var calculations = App.Simulation.MemberCalculator.calculate(discountPercentage, monthlySpend, monthlySpend, monthlyEnrollments, true, monthlyEnrollments);
+            return calculations['ReferralBonus'];
+            //return [0, 81, 210, 285, 409, 617, 910, 1312, 1904, 2306, 2766, 3020];
+        }
+    </script>
+}

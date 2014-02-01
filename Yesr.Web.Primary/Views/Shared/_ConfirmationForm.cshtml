@@ -1,0 +1,150 @@
+﻿<div class="container">
+    <div id="confirmation-form" class="modal hide fade in" style="display: none;">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>YESR confirmation Form</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div id="confirmationData" class="control-group">
+                    <label class="control-label" for="confirmationCode">Activation Code</label>
+                    <div class="controls">
+                        <input type="text" id="confirmationCode" placeholder="Your SMS activation code">
+                        <button id="btnConfirmationCodeGet" type="button" class="btn btn-primary btn-nbc">Get</button>
+                    </div>
+                </div>
+                <div id="confirmationFormData" class="control-group">
+                    <ul class="nav nav-tabs nav-stacked" style="margin-left: 60px">
+                        <li>Mobile Number: (050) 555-1212</li>
+                        <li>Registration Channel: Carrefour</li>
+                    </ul>
+
+                    <label class="control-label" for="cfmInputFirstName">First Name</label>
+                    <div class="controls">
+                        <input type="text" id="cfmInputFirstName" placeholder="First Name">
+                    </div>
+                    <label class="control-label" for="cfmInputSecondName">Second Name</label>
+                    <div class="controls">
+                        <input type="text" id="cfmInputSecondName" placeholder="Second Name">
+                    </div>
+                    <label class="control-label" for="cfmInputEmail">Email</label>
+                    <div class="controls">
+                        <input type="text" id="cfmInputEmail" placeholder="Email">
+                    </div>
+                    <label class="control-label" for="cfmInputUserId">User Id</label>
+                    <div class="controls">
+                        <input type="text" id="cfmInputUserId" placeholder="User Id">
+                    </div>
+                    <label class="control-label" for="cfmInputPassword">Password</label>
+                    <div class="controls">
+                        <input type="password" id="cfmInputPassword" placeholder="Password">
+                    </div>
+                    <label class="control-label" for="cfmInputPasswordVerify">Verify Password</label>
+                    <div class="controls">
+                        <input type="password" id="cfmInputPasswordVerify" placeholder="Verify Password">
+                    </div>
+                    <label class="control-label" for="cfmInputPassportCountryIssuer">Passport Issuing Country</label>
+                    <div class="controls">
+                        <input type="text" id="cfmInputPassportCountryIssuer" placeholder="Passport Issuing Country">
+                    </div>
+                    <label class="control-label" for="cfmInputPassport">Passport Number</label>
+                    <div class="controls">
+                        <input type="text" id="cfmInputPassport" placeholder="Passport Number">
+                    </div>
+                    <label class="control-label" for="cfmInputPassportExpDate">Passport Exp Date</label>
+                    <div class="controls">
+                        <input type="text" id="cfmInputPassportExpDate" placeholder="Passport Exp Date">
+                    </div>
+                    <label class="control-label" for="cfmInputBirthDate">Birth Date</label>
+                    <div class="controls">
+                        <input type="text" id="cfmInputBirthDate" placeholder="Birth Date">
+                    </div>
+                    <label class="control-label" for="cfmInputBirthCountry">Birth Country</label>
+                    <div class="controls">
+                        <input type="text" id="cfmInputBirthCountry" placeholder="Birth Country">
+                    </div>
+                    <div class="controls">
+                        <a href="#" id="cfmTerms" class="btn btn-primary" rel="popover" style="margin-top: 10px">Terms and Conditions</a>
+                    </div>
+                    <div class="controls">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            I agree to the terms and conditions
+                        </label>
+                    </div>
+                    <div class="controls">
+                        <button id="btnConfirm" type="button" class="btn btn-primary btn-nbc" data-toggle="modal" data-loading-text="Confirming..." style="margin-top: 10px">Confirm</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+</div>
+
+@*
+    Confirmation completion modal 
+*@
+<div class="container">
+    <div id="confirmation-completion-form" class="modal hide fade in" style="display: none;">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <p class="text-success">Congratulations! Your YESR membership has been confirmed!</p>
+        </div>
+        <div class="modal-body">
+            <ol>
+                <li>Your YESR membership number is 99923900012345</li>
+                <li>Your can access the members site using the credentials you provided in the confirmation form!</li>
+                <li>You are about to start a great savings journey!</li>
+                <li>Should you need any help, please do not hesitate to contact us!</li>
+            </ol>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function bootstrapConfirmationForm() {
+        $('#cfmTerms').popover({ placement: 'bottom', animation: true, html: true, title: 'YESR Terms and Conditions', content: termsData(), trigger: 'click' });
+
+        toggleConfirmationData(false);
+
+        $('#btnConfirmationCodeGet').click(function() {
+            toggleConfirmationData(true);
+        });
+
+        $('#btnConfirm').click(function() {
+            confirm();
+        });
+    };
+
+    function confirm() {
+        $('#btnConfirm').button('loading');
+
+        setTimeout(function() {
+            $('#btnConfirm').button('reset');
+            $('#confirmationCode').val('');
+            toggleConfirmationData(false);
+            $('#confirmation-completion-form').modal({ keyboard: true, backdrop: true });
+        }, 2000);
+    }
+
+    function termsData() {
+        return "<ul>" +
+            "<li>Please note your profile is not completed yet until you present your passport or Emirates ID at the nearest NBC location</li>" +
+            "<li>After activation and using the credentials you supplied above, you can login to the YESR site to manage your account</li>" +
+            "<li>You can print your card bar code directly from your account or use your YESR mobile application to present your bar code at particpating merchants</li>";
+    }
+
+    function toggleConfirmationData(show) {
+        if (show) {
+            $('#confirmationFormData').show();
+        } else {
+            $('#confirmationFormData').hide();
+        }
+    }
+</script>

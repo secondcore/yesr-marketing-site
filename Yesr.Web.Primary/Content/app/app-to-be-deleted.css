@@ -1,0 +1,262 @@
+﻿#main_wrapper {
+    /*width: fill-available;*/
+    margin: 15px auto;
+    text-align: left;
+}
+
+/*Navigation Bar*/
+
+.navbar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin-top: 20px;
+      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    }
+    .navbar-wrapper .navbar {
+
+    }
+
+    /* Remove border and change up box shadow for more contrast */
+    .navbar .navbar-inner {
+      border: 0;
+      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+              box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+
+    /* Downsize the brand/project name a bit */
+    .navbar .brand {
+      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+    /* Navbar links: increase padding for taller navbar */
+    .navbar .nav > li > a {
+      padding: 15px 20px;
+    }
+
+    /* Offset the responsive button for proper vertical alignment */
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
+/*Carousel*/
+.carousel {
+    margin-bottom: 0px;
+}
+
+.carousel .container {
+    position: relative;
+    z-index: 9;
+}
+
+.carousel-control {
+    height: 80px;
+    margin-top: 0;
+    font-size: 100px;
+    text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    background-color: transparent;
+    border: 0;
+}
+
+.carousel .item {
+    height: 500px;
+}
+.carousel img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 500px;
+}
+
+.carousel-caption {
+    background-color: transparent;
+    position: static;
+    max-width: 550px;
+    padding: 0 20px;
+    margin-left: 20px;
+    margin-top: 200px;
+}
+.carousel-caption h1,
+.carousel-caption .lead {
+    margin: 0;
+    line-height: 1.25;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.4);
+}
+.carousel-caption .btn {
+    margin-top: 10px;
+}
+    
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .span4 {
+    padding-top: 20px;
+    text-align: center;
+}
+.marketing h2 {
+    font-weight: normal;
+    font-size: 40px;
+}
+.marketing .span4 p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+    
+/* The moroon colored box*/
+
+#box {
+    color: #fff;
+    font-size: 20px;
+    height: 300px;
+    /*width: fill-available;*/
+    background-color: #b30135;
+
+        
+}
+    .backgroundbelow {
+    color: #fff;
+    font-size: 20px;
+    height: 200px;
+    /*width: fill-available;*/
+    background-color: #b30135;
+    border-style:solid;
+    border-color:#b30135;
+    border-left-width:15px;
+    border-right-width:15px;
+    border-bottom-width:15px;
+    background-image: url('/Content/img/patterned.jpg');
+    padding-bottom:  20px;
+        
+        
+        
+}
+
+/* The links on the box*/
+    
+    .header2 a:link, a:visited{
+    color: white;
+    text-decoration:none;
+    font-size: 20px;  
+}
+    
+.header2 a:hover {
+    color: white;
+    /*text-decoration:;*/
+    opacity: 0.7;
+    font-size: 20px; 
+    background-image: url('/Content/img/circleforhover.png');
+}
+    
+    .icon a:hover {
+    color: white;
+    /*text-decoration:bold;*/
+    opacity: 0.7;
+    font-size: 20px;  
+    background-image: url('/Content/img/circleforhover.png');
+}
+
+p{
+    font-size: 15px;
+}
+    
+/* Image gallery for merchants*/
+    
+div.img
+{
+    margin: 10px;
+    height: 100px;
+    width: 100px;
+    float: left;
+    text-align: center;
+      
+}	
+div.img img
+{
+    display: inline;
+    margin: 5px;
+    opacity:0.7;
+    filter:alpha(opacity=70); /* For IE8 and earlier */
+}
+div.img a:hover img {
+    border: 5px solid #b30135;
+    opacity:1;
+    filter:alpha(opacity=100); /* For IE8 and earlier */      
+}
+    
+.merchants {
+    padding-top: 20px;
+}
+
+.merchantText {
+    font-size: 20px;
+    text-align:center;
+    padding-top: 20px;
+    text-decoration: none;
+    color: #808080;   
+}
+
+.featurette-divider {
+      margin: 50px; /* Space out the Bootstrap <hr> more */
+    }
+
+.footer {
+    margin-left: 45px;
+    margin-right: 45px;
+}
+
+/*Button*/
+
+.btn-nbc {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #f20349;
+  *background-color: #b30135;
+  background-image: -moz-linear-gradient(top, #ce154b, #b30135);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ce154b), to(#b30135));
+  background-image: -webkit-linear-gradient(top, #ce154b, #b30135);
+  background-image: -o-linear-gradient(top, #ce154b, #b30135);
+  background-image: linear-gradient(to bottom, #ce154b, #b30135);
+  background-repeat: repeat-x;
+  border-color: #b30135 #b30135 #830328;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffce154b', endColorstr='#ffb30135', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.btn-nbc:hover,
+.btn-nbc:active,
+.btn-nbc.active,
+.btn-nbc.disabled,
+.btn-nbc[disabled] {
+  color: #ffffff;
+  background-color: #b30135;
+  *background-color: #e11562;
+}
+
+.btn-nbc:active,
+.btn-nbc.active {
+  background-color: #b7365c \9;
+}
+.btn-group.open .btn-nbc.dropdown-toggle {
+  background-color: #b30135;
+}
+
+.btn-nbc .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+.btn-nbc.active{
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+    

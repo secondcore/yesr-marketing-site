@@ -1,0 +1,43 @@
+﻿/**********************
+       CONSTANTS
+***********************/
+/*********************************
+   OPERATIONS & COLOR FUNCTIONS
+**********************************/
+/**********************
+        MIXINS
+***********************/
+.Round {
+  -webkit-border-radius: 9999px;
+  -moz-border-radius: 9999px;
+  border-radius: 9999px;
+}
+/**********************
+         STYLES
+***********************/
+.shape {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: #ddddff;
+  margin: 20px;
+  border: 20px solid #bbbbdd;
+}
+.shape:hover {
+  background: #ffdddd;
+}
+#shape1 {
+  -webkit-border-radius: 9999px;
+  -moz-border-radius: 9999px;
+  border-radius: 9999px;
+}
+#shape2 {
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}
+#shape3 {
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  border-radius: 60px;
+}

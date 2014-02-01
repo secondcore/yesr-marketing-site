@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+@*    @Styles.Render("~/Content/toastr")*@
+@*    @Styles.Render("~/Content/bootstrap")*@
+@*    @Styles.Render("~/Content/app")*@
+    <link href="/Content/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="/Content/bootstarp/bootstrap.min.css" rel="stylesheet" />
+@*    <link href="~/Content/bootstarp/metro-bootstrap.css" rel="stylesheet" />*@
+    <link href="/Content/app/app.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="main_wrapper">
+        <header>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner" style="margin-left: 10px">
+@*                    <div class="container">*@
+                        <ul class="nav">
+@*                            <li class="active"><a class="brand" href="#"><i class="icon-home"></i>&nbsp;&nbsp;Main</a></li>*@
+@*                            <li class="active">@Html.ActionLink("Main", "Index", "Home", null, new {@class = "brand"})</li>*@
+                            <li class="active"><a class="brand" href="@Url.Action("Index", "Home")"><i class="icon-home"></i>&nbsp;&nbsp;Home</a></li>
+                            <li>@Html.ActionLink("How it works", "How", "Home")</li>
+                            <li>
+                                    <ul class="nav">  
+                                        <li class="dropdown">  
+                                            <a href="#"  
+                                               class="dropdown-toggle"  
+                                               data-toggle="dropdown">  
+                                                Calculators  
+                                                <b class="caret"></b>  
+                                            </a>  
+                                            <ul class="dropdown-menu">  
+                                                <li>@Html.ActionLink("Member Calculator", "MemberCalculator", "Home")</li>  
+                                                <li>@Html.ActionLink("Discount Provider Calculator", "MerchantCalculator", "Home")</li>  
+                                                <li>@Html.ActionLink("Yesr Calculator", "YesrCalculator", "Home")</li>  
+                                            </ul>  
+                                        </li>  
+                                    </ul>
+                            </li>
+                            <li>@Html.ActionLink("Discount Providers", "Merchants", "Home")</li>
+                            <li>@Html.ActionLink("Glossary", "Glossary", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+
+                        <div class="container"> 
+                            <form class="navbar-form pull-right">
+                                <!-- Button to trigger modal -->
+                                <button class="btn btn-nbc" type="button" data-toggle="modal" data-target="#login-form">Login</button>
+                                <button class="btn btn-nbc" type="button" data-toggle="modal" data-target="#activation-form">Activate</button>
+                            </form>
+                        </div>
+@*                    </div>*@
+                </div>
+            </div>
+        </header>
+
+        <!-- Login Form -->
+        @Html.Partial("_LoginForm")
+
+        <!-- Registration Form -->
+        @Html.Partial("_RegistrationForm")
+
+        <!-- Activation Form -->
+        @Html.Partial("_ActivationForm")
+    
+	    @{
+            // The home page should be excluded from the breadcrumbs and the summary!!!
+            if (ViewBag.Title != "Home")
+            {
+                <ul class="breadcrumb" style="margin-top: 40px; margin-left: 10px; margin-right: 10px; margin-bottom: 10px">
+                    <li><a href="@Url.Action("Index", "Home")">Home</a> <span class="divider">/</span></li>
+                    <li class="active">@ViewBag.Title</li>
+                </ul>
+
+                <div class="row" style="margin: 10px">
+                    <p class="well">
+                        @ViewBag.Summary
+                    </p>
+                </div>
+            }
+        }
+
+	    <div id="body">
+			<section class="content-wrapper main-content clear-fix">
+				@RenderBody()
+			</section>
+		</div>
+
+        <!--Bottom Divider-->
+        <hr class="featurette-divider">
+
+		<footer class="footer">
+			<div class="content-wrapper">
+				<div class="float-left">
+					<p>&copy; @DateTime.Now.Year - YESR Group . Follow us on:
+						<a target="_blank" href="http://facebook.com" class="facebook"><img src="~/Content/img/facebook-4-32.png" alt="Facebook Logo"></a>
+						<a target="_blank" href="http://twitter.com" class="twitter"><img src="~/Content/img/twitter-4-32.png" alt="Facebook Logo"></a></p>
+				</div>
+				<div class="float-right">
+                    <p class="pull-right"><a href="#">Back to top</a></p>
+				</div>
+			</div>
+		</footer>
+	</div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/toastr")
+@*    @Scripts.Render("~/bundles/bootstrap")*@
+    <script src="/Scripts/libs/bootstrap.min.js"></script>       
+    <script src="/Scripts/libs/highcharts.js"></script>       
+    @Scripts.Render("~/bundles/knockout")
+@*    @Scripts.Render("~/bundles/app")*@
+    <script src="/Scripts/app/simulation.js"></script>       
+
+    <!-- I love it! One unified ready function that can be augmented by individual pages -->
+    <!-- So here we do global ready stuff --> 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // This function 'bootstrapActivationForm' is in the partial view _ActivationForm
+            bootstrapActivationForm();
+            // Set the charts them globally
+            var chartOptions = Highcharts.setOptions(App.Simulation.MemberCalculator.getChartGrayTheme());
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿<div class="row-fluid" style="margin: 10px;">
+    <div class="span12">
+        <div class="tabbable tabs-left">
+            <ul class="nav nav-tabs">
+                <li class="@(ViewBag.Tab == "gs" ? "active" :"")"><a href="#tabGettingStarted" data-toggle="tab">Getting Started</a></li>
+                <li class="@(ViewBag.Tab == "pc" ? "active" :"")"><a href="#tabPurchases" data-toggle="tab">Purchases</a></li>
+                <li class="@(ViewBag.Tab == "bn" ? "active" :"")"><a href="#tabBonuses" data-toggle="tab">Bonuses</a></li>
+                <li class="@(ViewBag.Tab == "sv" ? "active" :"")"><a href="#tabSaving" data-toggle="tab">Saving</a></li>
+                <li class="@(ViewBag.Tab == "mb" ? "active" :"")"><a href="#tabMobile" data-toggle="tab">Mobile</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane @(ViewBag.Tab == "gs" ? "active" :"")" id="tabGettingStarted">
+                    <p>Getting Started Info - Lorem Isum blah blah...</p>
+                </div>
+                <div class="tab-pane @(ViewBag.Tab == "pc" ? "active" :"")" id="tabPurchases">
+                    <p>Purchases Info - Lorem Isum blah blah...</p>
+                </div>
+                <div class="tab-pane @(ViewBag.Tab == "bn" ? "active" :"")" id="tabBonuses">
+                    <p>Bonuses Info - Lorem Isum blah blah...</p>
+                </div>
+                <div class="tab-pane @(ViewBag.Tab == "sv" ? "active" :"")" id="tabSaving">
+                    <p>Savings Info - Lorem Isum blah blah...</p>
+                </div>
+                <div class="tab-pane @(ViewBag.Tab == "mb" ? "active" :"")" id="tabMobile">
+                    <p>Mobile Info - Lorem Isum blah blah...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

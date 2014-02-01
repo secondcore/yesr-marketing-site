@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+
+    <style>
+        #Example_F {
+        -moz-box-shadow: 0 0 5px 5px #888;
+        -webkit-box-shadow: 0 0 5px 5px#888;
+        box-shadow: 0 0 5px 5px #888;
+        }
+
+        #Example_R {
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -moz-box-shadow: 5px 5px 5px black;
+        -webkit-box-shadow: 5px 5px 5px black;
+        box-shadow: 5px 5px 5px black;
+        }
+
+        /*#box {
+             width:400px;
+            height:305px;
+            margin:50px auto;
+            position:relative;
+            background-color:#fff;
+            border:5px solid silver; 
+        }*/
+
+        #box:before{
+            -webkit-transform: skew(0deg, 4deg);
+            box-shadow:5px 5px 5px #000;
+                position:absolute;
+            background-color:black;
+            bottom:-5px;
+            right:0;
+            content:'';
+            z-index:-6;
+            width:220px;
+            height:175px;        
+            right:5px;
+        }
+
+        #box:after{    
+            -webkit-transform: skew(0deg, -4deg);
+            box-shadow:-5px 5px 5px #000;
+                position:absolute;
+            bottom:-5px;
+            content:'';
+            z-index:-5;
+            width:220px;
+            height:175px;
+            background-color:black;
+            left:5px;
+        }
+    
+        /*
+        #inner:before{
+                background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(0,0,0,.1)), color-stop(85%,rgba(255,255,255,0.01)), color-stop(100%,rgba(255,255,255,.35)));
+                width:400px;
+                height:305px;
+                z-index:5;
+                content:'';
+                position:absolute;
+                left:10px;
+                top:-310px;
+        }
+        #inner:after{
+                background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(255,255,255,.35)), color-stop(15%,rgba(255,255,255,0.01)), color-stop(100%,rgba(255,255,255,.05)));
+                width:400px;
+                height:305px;
+                z-index:5;
+                content:'';
+                position:absolute;
+                left:10px;
+                top:-310px;
+        }*/
+    </style>
+
+<body>
+<div id="box">
+    <div id="inner"></div>
+</div>
+
+<!--<div id="Example_R" style="margin: 10px; width: 300px; height: 200px; background-color: #5f9ea0">
+</div>-->
+</body>
+</html>
